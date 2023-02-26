@@ -3,7 +3,50 @@ package chapter07;
 public class _18_Enum {
 
     public static void main(String[] args) {
+        Resolution resolution = Resolution.HD;
+        System.out.println(resolution);
 
+        switch (resolution) {
+            case HD:
+                System.out.println("일반화질");
+                break;
+            case FHD:
+                System.out.println("고화질");
+                break;
+            case UHD:
+                System.out.println("초고화질");
+                break;
+            default:
+                break;
+        }
+
+        resolution = Resolution.valueOf("UHD");
+        System.out.println(resolution);
+
+        for (Resolution myResolution : Resolution.values()) {
+            System.out.println(myResolution.name()+ " " + myResolution.ordinal());
+        }
+
+        for (Resolution res: Resolution.values()) {
+            System.out.println(res.name() + " " + res.getWidth());
+        }
+
+    }
+
+}
+
+enum Resolution {
+
+    HD(1280), FHD(1920), UHD(3840);
+
+    private final int width;
+
+    Resolution(int width) {
+        this.width = width;
+    }
+
+    public int getWidth() {
+        return width;
     }
 
 }
